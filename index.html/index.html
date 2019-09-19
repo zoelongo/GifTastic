@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script rel="stylesheet" type="text/css" src="Class-Content/06-ajax/02-Homework/Instructions/styles.css"></script>
+    <title>Cute Fix</title>
+</head>
+
+<body>
+
+        <button data-id="cat-button">Cats!</button>
+
+        <button data-id="goat-button">Goats!</button>
+
+        <button data-id="dog-button">Dogs!</button>
+
+        <button data-id="squirrel-button">Squirrels!</button>
+
+        <button data-id="gerbil-button">Gerbils!</button>
+
+        <button data-id="pig-button">Future bacon!</button>
+
+        
+        <form id="submitAnimal">
+            Add an animal of your choice! <br />
+            <input id="animalInput" type="text" name="animalInput"> <br />
+        </form>
+
+    <div id="gifsHere"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $("button").on("click", function () {
+
+            var animal = $(this).attr("data-id");
+
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+            animal + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+
+                .then(function (response) {
+
+                    var results = response.data;
+
+                    for (var i = 0; i < results.length; i++) {
+
+                        if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+
+                            var gifDiv = $("<div>");
+
+                            var rating = results[i].rating;
+
+                            var p = $("<p>").text("Rating: " + rating);
+
+                            var animalGif = $("<img>");
+
+                            animalGif.attr("src", results[i].images.fixed_height.url);
+
+                            gifDiv.append(p);
+                            gifDiv.append(animalGif);
+
+                            $("#gifsHere").prepend(gifDiv);
+
+
+                        }
+                    }
+
+                })
+        })
+
+
+    </script>
+</body>
+
+</html>
