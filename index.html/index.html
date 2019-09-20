@@ -5,12 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script rel="stylesheet" type="text/css" src="Class-Content/06-ajax/02-Homework/Instructions/styles.css"></script>
+    <!-- <link rel="stylesheet" type="text/css" src="styles.css"> -->
     <title>Cute Fix</title>
 </head>
 
 <body>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <div id="animal-buttons"></div>
+        
         <button data-id="cat-button">Cats!</button>
 
         <button data-id="goat-button">Goats!</button>
@@ -21,15 +31,25 @@
 
         <button data-id="gerbil-button">Gerbils!</button>
 
-        <button data-id="pig-button">Future bacon!</button>
+        <button data-id="pig-button">Pigs!</button>
 
-        
-        <form id="submitAnimal">
-            Add an animal of your choice! <br />
-            <input id="animalInput" type="text" name="animalInput"> <br />
-        </form>
+        <div id="buttons-view"></div>
+
+        <div class="container">
+                <h1>Cute Fix</h1>
+                <h3>Cheaper than therapy!</h3>
+            
+                <!-- Movies will get dumped here -->
+                <div id="buttons-view"></div>
+            
+                <form id="animal-form">
+                  <label for="animal-inputs">Add an Animal!</label>
+                  <input type="text" data-id="animal-input"><br>
+                  <input id="submit-animal" type="submit" value="Submit!">
+                </form>
 
     <div id="gifsHere"></div>
+    <div id="userGifHere"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -39,7 +59,7 @@
             var animal = $(this).attr("data-id");
 
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            animal + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+                animal + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
             $.ajax({
                 url: queryURL,
@@ -72,11 +92,56 @@
 
                         }
                     }
-
                 })
+
         })
 
+        $("#submit-animal").on("click", function () {
 
+            var userAnimal = $(this).attr("#animal-input").val().trim();
+
+            console.log(userAnimal);
+
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                userAnimal + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+
+                .then(function(response){
+
+                    var userResults = response.data;
+
+                    for (var i = 0; i < userResults.length; i++) {
+
+                        if (userResults[i].rating !== "r" && userResults[i].rating !== "pg-13") {
+
+                            var userDiv = $("<div>");
+
+                            var rating = userResults[i].rating;
+
+                            var p = $("<p>").text("Rating: " + rating);
+
+                            var userGif = $("<img>");
+
+                            userGif.attr("src", userResults[i].images.fixed_height.url);
+
+                            userDiv.append(p);
+                            userDiv.append(userGif);
+
+                            $("#userGifsHere").prepend(userDiv);
+
+
+                        }
+
+
+                    }
+                })
+
+        });        
+                
     </script>
 </body>
 

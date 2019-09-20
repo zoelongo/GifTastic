@@ -1,28 +1,68 @@
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    text-align: center;
+/* .button {
+    background-color: lightpink;
+    color: maroon;
+    align-content: center;
 }
 
-input:focus {
-    background-color: lightblue;
-}
-
-
-
-
-
-
-
-/* input [type=text] {
+.form [type=text]{
     width: 100%;
-    padding: 12px 20px;
+    padding: 20px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
+    align-content: center
+}
 
-input[type=text]:focus {
+.form [type=text]:focus {
     background-color: lightblue;
 } */
+
+
+
+
+#animal-button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	box-shadow:inset 0px 1px 0px 0px #fbafe3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ebabcd), color-stop(1, #ed03d2));
+	background:-moz-linear-gradient(top, #ebabcd 5%, #ed03d2 100%);
+	background:-webkit-linear-gradient(top, #ebabcd 5%, #ed03d2 100%);
+	background:-o-linear-gradient(top, #ebabcd 5%, #ed03d2 100%);
+	background:-ms-linear-gradient(top, #ebabcd 5%, #ed03d2 100%);
+	background:linear-gradient(to bottom, #ebabcd 5%, #ed03d2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebabcd', endColorstr='#ed03d2',GradientType=0);
+	background-color:#ebabcd;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ee1eb5;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #c70067;
+}
+button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ed03d2), color-stop(1, #ebabcd));
+	background:-moz-linear-gradient(top, #ed03d2 5%, #ebabcd 100%);
+	background:-webkit-linear-gradient(top, #ed03d2 5%, #ebabcd 100%);
+	background:-o-linear-gradient(top, #ed03d2 5%, #ebabcd 100%);
+	background:-ms-linear-gradient(top, #ed03d2 5%, #ebabcd 100%);
+	background:linear-gradient(to bottom, #ed03d2 5%, #ebabcd 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed03d2', endColorstr='#ebabcd',GradientType=0);
+	background-color:#ed03d2;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+
