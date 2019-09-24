@@ -19,6 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
     <div id="animal-buttons"></div>
         
         <button data-id="cat-button">Cats!</button>
@@ -36,10 +37,8 @@
         <div id="buttons-view"></div>
 
         <div class="container">
-                <h1>Cute Fix</h1>
-                <h3>Cheaper than therapy!</h3>
+                <h1>Cute Fix: <small>Cheaper than therapy!</small></h1>
             
-                <!-- Movies will get dumped here -->
                 <div id="buttons-view"></div>
             
                 <form id="animal-form">
@@ -50,6 +49,8 @@
 
     <div id="gifsHere"></div>
     <div id="userGifHere"></div>
+
+</body>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -95,6 +96,23 @@
                 })
 
         })
+
+    // $("#add-animal-button").on("click", function(event) {
+	// event.preventDefault();
+	// // var alreadyExist = false;
+	// // if(topics.indexOf($("#new-animal-input").val()) !== -1) {
+	// // 	alreadyExist = true;
+	
+	// // if($("#new-animal-input").val() !== "" && alreadyExist === false) {
+    //     var newAnimal = $("#new-animal-input").val().toLowerCase();
+	// 	topics.push(newAnimal);
+	// 	var button = $("<button>").text(newAnimal);
+	// 	button.attr("data-animal", newAnimal);
+	// 	button.addClass("animal-button");
+	// 	$("#button-group").append(button);
+	
+	// $("#new-animal-input").val("");
+// });
 
         $("#submit-animal").on("click", function () {
 
@@ -143,6 +161,6 @@
         });        
                 
     </script>
-</body>
+
 
 </html>
